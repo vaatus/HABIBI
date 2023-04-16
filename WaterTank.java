@@ -1,8 +1,8 @@
 public class WaterTank {
-    private float capacity;
-    private float current_water_level;
+    private int capacity;
+    private int current_water_level;
 
-    public void AddWater(float amount)
+    public void AddWater(int amount)
     {
         if(current_water_level+amount <capacity)
         {
@@ -14,7 +14,7 @@ public class WaterTank {
         }
     }
 
-    public void RemoveWater(float amount)
+    public void RemoveWater(int amount)
     {
         if(current_water_level-amount > 0)
         {
@@ -25,4 +25,6 @@ public class WaterTank {
             current_water_level = 0;
         }
     }
+
+    public int getCurrentWaterLevel(){ return current_water_level; }
 }
