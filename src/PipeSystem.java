@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 
 public class PipeSystem {
-    private ArrayList<Pipe> pipes; // I changed the table to  an arraylist
-    private ArrayList<ActiveElement> elements;// I changed the table to  an arraylist
     private ArrayList<Pump> pumps;// I changed the table to  an arraylist
     private ArrayList<Cistern> cisterns;
     private Spring spring;
@@ -17,8 +15,9 @@ public class PipeSystem {
 
 
     public float GetWaterTransferred() {
+        System.out.println("GetWaterTransferred()");
         for (Cistern c : cisterns){
-            water_transferred +=
+            water_transferred += c.getCurrentWaterLevel();
         }
         return water_transferred;
     }
@@ -28,10 +27,14 @@ public class PipeSystem {
         System.out.println("TransferWater()");
         //Parcouring the arraylit of pumps to transfer the water through eachpump//
         for (Pump pump : pumps) {
-            if (pump.working) {
+            if (pump.GetWorking()) {
                 pump.TransferWater();
             }
         }
+    }
+
+    public void Break(int randomNumber) {
+        pumps.get(randomNumber % pumps.size()).GoOutOfOrder();
     }
 }
 

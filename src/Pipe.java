@@ -1,6 +1,7 @@
 public class Pipe implements PumpPipe {
     private int id;
     private ActiveElement active_element_end;
+    private ActiveElement active_element_begin;
     private boolean free_end;
     private boolean working;
     private boolean busy;
@@ -8,6 +9,7 @@ public class Pipe implements PumpPipe {
     public void Connect(Pump p) {
         System.out.println("Connect()");
         p.add(this);
+
     }
 
     public void Disconnect(Pump p) {
@@ -19,6 +21,9 @@ public class Pipe implements PumpPipe {
     {
         System.out.println("SetBusy()");
         busy = true;
+    }
+    public boolean GetBusy(){
+        return busy;
     }
 
 
@@ -44,5 +49,10 @@ public class Pipe implements PumpPipe {
     public void ChangeState() {
         System.out.println("ChangeState()");
         working = !working;
+    }
+
+    @Override
+    public boolean GetWorking() {
+        return working;
     }
 }

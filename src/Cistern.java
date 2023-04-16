@@ -13,4 +13,9 @@ public class Cistern extends ActiveElement{
                 Pipe p = new Pipe();
                 pipes.add(p);
         };
+
+        @Override
+        public void TransferWater() {
+
+        }
 }

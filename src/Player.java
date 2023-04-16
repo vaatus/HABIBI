@@ -1,12 +1,12 @@
 public class Player {
-    private int id;
-    private String role;
-    private PumpPipe position;
-    public void ChangePumpDirection(int in_pi,int out_pi){
+    protected int id;
+    protected String role;
+    protected PumpPipe position;
+    public void ChangePumpDirection(Pipe p_in,Pipe p_out){
         System.out.println("ChangePumpDirection()");
         if (position.GetType()=="Pump"){
             Pump pump= (Pump) position;
-            pump.SetPumpDirection(in_pi,out_pi);
+            pump.SetPumpDirection(p_in,p_out);
         }
     }
     public void Move(PumpPipe i){
