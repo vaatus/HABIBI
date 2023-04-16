@@ -1,7 +1,7 @@
 public class Spring extends ActiveElement{
     Pipe outgoing;
     @Override
-    public void TransferWater() {
-
+    public int TransferWater() {
+        return outgoing.GetOutgoing().TransferWater();
     }
 }

@@ -19,11 +19,11 @@ public class Pump extends ActiveElement implements PumpPipe{
         System.out.println("SetPumpDirection()");
         incoming_pipe = p_in;
         outgoing_pipe = p_out;
-    };
+    }
     public void GoOutOfOrder(){
         System.out.println("GoOutOfOrder()");
         working =false ;
-    };
+    }
 
     @Override
     public String GetType() {
@@ -48,7 +48,12 @@ public class Pump extends ActiveElement implements PumpPipe{
     }
 
     @Override
-    public void TransferWater() {
+    public int GetID() {
+        return id;
+    }
 
+    @Override
+    public int TransferWater() {
+        return 0;
     }
 }

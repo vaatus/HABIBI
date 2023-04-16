@@ -4,13 +4,27 @@ public class Player {
     protected PumpPipe position;
     public void ChangePumpDirection(Pipe p_in,Pipe p_out){
         System.out.println("ChangePumpDirection()");
-        if (position.GetType()=="Pump"){
-            Pump pump= (Pump) position;
-            pump.SetPumpDirection(p_in,p_out);
+        if (position.GetType()=="Pipe") {
+            System.out.println("Please stand up on a pump");
+            return;
         }
+        Pump pump = (Pump) position;
+        pump.SetPumpDirection(p_in,p_out);
+        System.out.println("The direction is changed");
     }
-    public void Move(PumpPipe i){
+    public void Move(PumpPipe destination){
         System.out.println("Move()");
-        position=i;
-    };
+        if(destination.GetType() == "Pump")
+        {
+            position=destination;
+            return;
+        }
+        Pipe pi = (Pipe) destination;
+        if(pi.GetBusy())
+        {
+            System.out.println("pipe is busy");
+            return;
+        }
+        position = destination;
+    }
 }

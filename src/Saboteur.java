@@ -1,8 +1,19 @@
 class Saboteur extends Player {
 
+    public void PuncturePipe() {
+        System.out.println("PuncturePipe()");
+        if(position.GetType() == "Pump"){
+            System.out.println("This is not a pipe");
+            return;
+        }
 
-    public void PuncturePipe(Pipe pi) {
-        //Change pipe working property to false
+        Pipe pi = (Pipe)position;
+        if(!pi.GetWorking()){
+            System.out.println("The pipe is already punctured");
+            return;
+        }
+        pi.ChangeState();
+        System.out.println("The pipe is punctured");
     }
 }
 

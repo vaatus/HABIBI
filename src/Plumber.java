@@ -5,28 +5,31 @@ public class Plumber extends Player {
         System.out.println("FixPump()");
         if(position.GetType() == "Pipe"){
             System.out.println("This is not a pump");
-            return ;
+            return;
         }
-        //Change pump working property to true
         Pump pu = (Pump)position;
         if(pu.GetWorking()){
+            System.out.println("The pump is already working");
             return;
         }
         pu.ChangeState();
+        System.out.println("The pump is fixed");
     }
 
     public void FixPipe() {
         System.out.println("FixPipe()");
         if(position.GetType() == "Pump"){
             System.out.println("This is not a pipe");
-            return ;
+            return;
         }
-        //Change pipe working property to true
+
         Pipe pi = (Pipe)position;
         if(pi.GetWorking()){
+            System.out.println("The pipe is already working");
             return;
         }
         pi.ChangeState();
+        System.out.println("The pipe is fixed");
     }
 
     public void ConnectPipe(Pump pu) {
@@ -49,17 +52,33 @@ public class Plumber extends Player {
         position = new Pump(new Pipe(), new Pipe());
     }
 
-    public void PickupPump(Cistern c) {
+    public void PickupPump() {
         System.out.println("PickupPump()");
+        if (has_pump){
+            System.out.println("Plumber already has pump");
+            return;
+        }
+        if(position.GetType() == "Pump")
+        {
+            System.out.println("Please move to a pipe next to one of the cisterns.");
+            return;
+        }
+        Pipe pi = (Pipe)position;
+        if(pi.GetID() < 100)
+        {
+            System.out.println("Please move to a pipe next to one of the cisterns.");
+            return;
+        }
+        Cistern c = (Cistern) pi.GetOutgoing();
         c.RemovePump();
-        // Further implementation of the PickupPump function
         this.has_pump = true;
+
     }
 
     public void DisconnectPipe(Pump pu) {
         if(position.GetType() == "Pipe"){
             System.out.println("You need to stand on a pump");
-            return ;
+            return;
         }
         Pipe pi = (Pipe)position;
         pi.Disconnect(pu);

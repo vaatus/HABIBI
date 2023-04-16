@@ -54,4 +54,13 @@ public class Pipe implements PumpPipe {
     public boolean GetWorking() {
         return working;
     }
+
+    @Override
+    public int GetID() {
+        return id;
+    }
+
+    public ActiveElement GetOutgoing() {
+        return active_element_end;
+    }
 }

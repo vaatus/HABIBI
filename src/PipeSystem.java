@@ -40,11 +40,7 @@ public class PipeSystem {
 
 /*int transferwater() spring
 {
-
-    for (pipes las9in feha)
-    {
-        leakage +=  pipe.end.transferwater();
-    }
+    leakage +=  pipe.end.transferwater();
     return leakage;
 }
 

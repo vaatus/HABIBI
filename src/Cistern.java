@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Cistern extends ActiveElement{
-        private Pipe ingoing;
+        private ArrayList<Pipe> ingoing;
         private int  pump_supply ;
         private ArrayList<Pipe> pipes;
         public void RemovePump(){
@@ -16,7 +16,7 @@ public class Cistern extends ActiveElement{
         };
 
         @Override
-        public void TransferWater() {
-
+        public int TransferWater() {
+                return 0;
         }
 }
