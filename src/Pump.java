@@ -6,7 +6,7 @@ public class Pump extends ActiveElement implements PumpPipe{
     private Pipe outgoing_pipe;
     private int max_connectable_pipes;
     private int current_connected_pipes;
-    private ArrayList<Pipe> neighbouring_pipes= new ArrayList<>();
+    private ArrayList<Pipe> neighbouring_pipes = new ArrayList<>();
     private ArrayList<Pipe> connected_pipes = new ArrayList<>();
     private boolean working;
 
@@ -54,6 +54,29 @@ public class Pump extends ActiveElement implements PumpPipe{
 
     @Override
     public int TransferWater() {
-        return 0;
+        int water_level = getCurrentWaterLevel();
+        if (!water_tank.isFull()){
+            water_tank.AddWater(1);
+            return 0;
+        }
+
+        if(!working)
+        {
+            System.out.println("pump is broken");
+            return 0;
+        }
+
+        if(!outgoing_pipe.GetWorking())
+        {
+            System.out.println("Pipe is leaking");
+            return 1;
+        }
+
+        if(outgoing_pipe.GetOutgoing() == null){
+            System.out.println("the pipe is not connected");
+            return 1;
+        }
+
+        return outgoing_pipe.GetOutgoing().TransferWater();
     }
 }

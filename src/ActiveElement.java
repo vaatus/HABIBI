@@ -1,7 +1,7 @@
 public abstract class ActiveElement {
 
-    private int id ;
-    private WaterTank water_tank;
+    protected int id ;
+    protected WaterTank water_tank;
 
     public abstract int TransferWater();
     public int getCurrentWaterLevel(){

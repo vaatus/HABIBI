@@ -27,4 +27,6 @@ public class WaterTank {
     }
 
     public int getCurrentWaterLevel(){ return current_water_level; }
+
+    public boolean isFull(){ return current_water_level == capacity; }
 }

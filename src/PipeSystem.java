@@ -26,11 +26,7 @@ public class PipeSystem {
     public void TransferWater() {
         System.out.println("TransferWater()");
         //Parcouring the arraylit of pumps to transfer the water through eachpump//
-        for (Pump pump : pumps) {
-            if (pump.GetWorking()) {
-                pump.TransferWater();
-            }
-        }
+        leakage += spring.TransferWater();
     }
 
     public void Break(int randomNumber) {

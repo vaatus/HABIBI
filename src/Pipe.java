@@ -2,7 +2,6 @@ public class Pipe implements PumpPipe {
     private int id;
     private ActiveElement active_element_end;
     private ActiveElement active_element_begin;
-    private boolean free_end;
     private boolean working;
     private boolean busy;
 
@@ -24,19 +23,6 @@ public class Pipe implements PumpPipe {
     public boolean GetBusy(){
         return busy;
     }
-
-
-    public float getLeakage(){
-        System.out.println("getLeakage()");
-        // TODO: Implement the logic for calculating the leakage of the pipe
-        return 0;
-    }
-
-    public float getWaterTransferred(){
-        System.out.println("getWaterTransferred()");
-        // TODO: Implement the logic for calculating the amount of water transferred through the pipe
-        return 0;
-    };
 
     @Override
     public String GetType() {
