@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 public class Controller {
     private Team plumbers;
@@ -31,9 +30,9 @@ public class Controller {
         }
     };
     public void AnnounceWinner(){
-        if (pipe_system.GetWaterTransferred() > pipe_system.GetTotalLeakage()) {
+        if (pipe_system.GetWaterTransferred() > pipe_system.GetLeakage()) {
             System.out.println("The plumbers win!");
-        } else if (pipe_system.GetWaterTransferred() < pipe_system.GetTotalLeakage()){
+        } else if (pipe_system.GetWaterTransferred() < pipe_system.GetLeakage()){
             System.out.println("The saboteurs win!");
         } else {
             System.out.println("Draw!");

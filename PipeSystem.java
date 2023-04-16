@@ -4,30 +4,22 @@ public class PipeSystem {
     private ArrayList<Pipe> pipes; // I changed the table to  an arraylist
     private ArrayList<ActiveElement> elements;// I changed the table to  an arraylist
     private ArrayList<Pump> pumps;// I changed the table to  an arraylist
+    private ArrayList<Cistern> cisterns;
+    private Spring spring;
     private float leakage;
     private float water_transferred;
 
 
-    public float GetTotalLeakage() {
+    public float GetLeakage() {
         System.out.println("GetTotalLeakage()");
-        float totalleakage = 0;
-        //PArcouring the arraylit of pipes to get the leakage of each pipe //
-        for (Pipe pipe : pipes) {
-            totalleakage += pipe.getLeakage();
-        }
-        leakage = total_leakage;
         return leakage;
     }
 
 
     public float GetWaterTransferred() {
-        System.out.println("GetWaterTransferred()");
-        float totaltransferredwater = 0;
-        //Parcouring the arraylit of pipes to get the transfered water  of each pipe //
-        for (Pipe pipe : pipes) {
-            totaltransferredwater += pipe.getWaterTransferred();
+        for (Cistern c : cisterns){
+            water_transferred +=
         }
-        water_transferred = totaltransferredwater;
         return water_transferred;
     }
 
@@ -42,4 +34,27 @@ public class PipeSystem {
         }
     }
 }
+
+/*int transferwater() spring
+{
+
+    for (pipes las9in feha)
+    {
+        leakage +=  pipe.end.transferwater();
+    }
+    return leakage;
+}
+
+int transferwater() pump
+{
+    if pipe.end= punctured or ma3nduch end return 1;
+    check water tank;
+    return pipe.end.transferwater
+}
+
+int transferwater() cistern
+{
+    water tank yzid;
+    return 0;
+}*/
 
