@@ -9,7 +9,6 @@ public class Pipe implements PumpPipe {
     public void Connect(Pump p) {
         System.out.println("Connect()");
         p.add(this);
-
     }
 
     public void Disconnect(Pump p) {

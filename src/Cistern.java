@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Cistern extends ActiveElement{
+        private Pipe ingoing;
         private int  pump_supply ;
         private ArrayList<Pipe> pipes;
         public void RemovePump(){
