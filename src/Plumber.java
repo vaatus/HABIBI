@@ -24,18 +24,20 @@ public class Plumber extends Player {
 
     public void FixPipe() {
         System.out.println("FixPipe()");
-        if(position.GetType() == "Pump"){
-            System.out.println("This is not a pipe");
-            return;
-        }
+        if (position!=null) {
+            if (position.GetType() == "Pump") {
+                System.out.println("This is not a pipe");
+                return;
+            }
 
-        Pipe pi = (Pipe)position;
-        if(pi.GetWorking()){
-            System.out.println("The pipe is already working");
-            return;
+            Pipe pi = (Pipe) position;
+            if (pi.GetWorking()) {
+                System.out.println("The pipe is already working");
+                return;
+            }
+            pi.ChangeState();
+            System.out.println("The pipe is fixed");
         }
-        pi.ChangeState();
-        System.out.println("The pipe is fixed");
     }
 
     public void ConnectPipe(Pump p1, Pump p2) {

@@ -61,24 +61,27 @@ public class Controller {
         pipe_system.AddPipe();
     }
 
-    public void SelectPlayer(char team, int player) {
+    public Player SelectPlayer(char team, int player) {
 
         switch (team){
             case 's':
                 System.out.println("SelectPlayer() selects the Saboteur team");
-                saboteurs.SelectPlayer(player);
-                break;
+                return saboteurs.SelectPlayer(player);
             case 'p':
                 System.out.println("SelectPlayer() selects the Plumber team");
-                plumbers.SelectPlayer(player);
-                break;
+                return plumbers.SelectPlayer(player);
             default:
                 System.out.println("There are only two teams: 's' -> saboteurs/ 'p' -> plumbers");
-                break;
+                return new Player();
         }
     }
 
     public void TransferWater(){
-        pipe_system.TransferWater();
+        //pipe_system.TransferWater();
+        System.out.println("TransferWater(): Water is being transferred from the spring to the cistern");
+    }
+
+    public Timer GetTimer() {
+        return timer;
     }
 }

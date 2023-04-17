@@ -6,4 +6,6 @@ public interface PumpPipe {
     public abstract boolean GetWorking();
 
     public abstract int GetID();
+
+    public abstract void SetFree();
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Pump extends ActiveElement implements PumpPipe{
     private int id;
-    private static int number=0;
+    private static int number=50;
     private  Pipe incoming_pipe ;
     private Pipe outgoing_pipe;
     private int max_connectable_pipes;
@@ -13,7 +13,7 @@ public class Pump extends ActiveElement implements PumpPipe{
     private ArrayList<Pipe> connected_pipes = new ArrayList<>();
     private boolean working;
 
-    //Pump class contructor
+    //Pump class constructor
     public Pump(Pipe pipe, Pipe pipe1) {
         super();
         this.incoming_pipe=pipe;
@@ -60,6 +60,12 @@ public class Pump extends ActiveElement implements PumpPipe{
     public int GetID() {
         return id;
     }
+
+    @Override
+    public void SetFree() {
+
+    }
+
 
     @Override
     public int TransferWater() {

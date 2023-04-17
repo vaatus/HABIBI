@@ -76,6 +76,11 @@ public class Pipe implements PumpPipe {
         return id;
     }
 
+    @Override
+    public void SetFree() {
+        this.busy=false;
+    }
+
     public ActiveElement GetOutgoing() {
         return active_element_end;
     }
@@ -95,4 +100,5 @@ public class Pipe implements PumpPipe {
     public void SetOutgoing(ActiveElement outgoing) {
         active_element_end=outgoing;
     }
+
 }

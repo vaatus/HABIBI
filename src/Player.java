@@ -15,10 +15,14 @@ public class Player {
         System.out.println("The direction is changed");
     }
     public void Move(PumpPipe destination){
-        System.out.println("Move()");
+
         if(destination.GetType() == "Pump")
         {
+            if (position!=null){
+                position.SetFree();
+            }
             position=destination;
+            System.out.println("Move(): Player has been moved to the Pump "+destination.GetID());
             return;
         }
         Pipe pi = (Pipe) destination;
@@ -27,6 +31,11 @@ public class Player {
             System.out.println("pipe is busy");
             return;
         }
+        if (position!=null){
+            position.SetFree();
+        }
         position = destination;
+        pi.SetBusy();
+        System.out.println("Move(): Player has been moved to the Pipe "+destination.GetID());
     }
 }
