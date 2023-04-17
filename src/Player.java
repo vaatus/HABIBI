@@ -1,3 +1,5 @@
+package src;
+
 public class Player {
     protected int id;
     protected String role;

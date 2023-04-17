@@ -1,3 +1,5 @@
+package src;
+
 import java.util.ArrayList;
 import java.util.Random;
 public class Controller {
@@ -5,7 +7,13 @@ public class Controller {
     private Team saboteurs;
     private Timer timer;
     private PipeSystem pipe_system;
-    private ArrayList<Cistern> cisterns;
+
+    //Controller class constructor
+    public Controller() {
+        pipe_system = new PipeSystem();
+        plumbers = new Team();
+        saboteurs = new Team();
+    }
     public void BreakPump(){
         Random random = new Random();
         int randomNumber = random.nextInt(100);
@@ -50,23 +58,27 @@ public class Controller {
         }
     }
     public void AddPipe(){
-        Random random = new Random();
-        int randomNumber = random.nextInt(4);
-        cisterns.get(randomNumber % cisterns.size()).AddPipe();
+        pipe_system.AddPipe();
     }
 
-    private void SelectPlayer(char team, int player) {
-        System.out.println("SelectPlayer()");
+    public void SelectPlayer(char team, int player) {
+
         switch (team){
             case 's':
+                System.out.println("SelectPlayer() selects the Saboteur team");
                 saboteurs.SelectPlayer(player);
                 break;
             case 'p':
+                System.out.println("SelectPlayer() selects the Plumber team");
                 plumbers.SelectPlayer(player);
                 break;
             default:
                 System.out.println("There are only two teams: 's' -> saboteurs/ 'p' -> plumbers");
                 break;
         }
+    }
+
+    public void TransferWater(){
+        pipe_system.TransferWater();
     }
 }

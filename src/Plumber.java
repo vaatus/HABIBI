@@ -1,5 +1,11 @@
+package src;
+
 public class Plumber extends Player {
     private boolean has_pump;
+
+    public Plumber(){
+        position=null;
+    }
 
     public void FixPump() {
         System.out.println("FixPump()");
@@ -32,14 +38,14 @@ public class Plumber extends Player {
         System.out.println("The pipe is fixed");
     }
 
-    public void ConnectPipe(Pump pu) {
+    public void ConnectPipe(Pump p1, Pump p2) {
         System.out.println("ConnectPipe()");
-        if(position.GetType() == "Pipe"){
-            System.out.println("You need to stand on a pump");
+        if(position.GetType() == "Pump"){
+            System.out.println("You need to stand on a pipe");
             return ;
         }
         Pipe pi = (Pipe)position;
-        pi.Connect(pu);
+        pi.Connect(p1,p2);
     }
 
     public void InsertPump() {
@@ -48,8 +54,15 @@ public class Plumber extends Player {
             System.out.println("You're already standing on a Pump");
             return ;
         }
-        //Constructor needs to be created for Pump class
-        position = new Pump(new Pipe(), new Pipe());
+        Pipe p=(Pipe) position;
+        Pump pump=p.GetActiveElementBegin();
+        Pump pump1=p.GetActiveElementEnd();
+        p=null;
+        Pipe p1=new Pipe();
+        Pipe p2=new Pipe();
+        position = new Pump(p1, p2);
+        p1.Connect((Pump) position,pump);
+        p2.Connect((Pump) position,pump1);
     }
 
     public void PickupPump() {
@@ -75,12 +88,12 @@ public class Plumber extends Player {
 
     }
 
-    public void DisconnectPipe(Pump pu) {
-        if(position.GetType() == "Pipe"){
-            System.out.println("You need to stand on a pump");
+    public void DisconnectPipe(Pump p1, Pump p2) {
+        if(position.GetType() == "Pump"){
+            System.out.println("You need to stand on a pipe");
             return;
         }
         Pipe pi = (Pipe)position;
-        pi.Disconnect(pu);
+        pi.Disconnect(p1,p2);
     }
 }

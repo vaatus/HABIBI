@@ -1,3 +1,5 @@
+package src;
+
 public class WaterTank {
     private int capacity;
     private int current_water_level;

@@ -1,3 +1,5 @@
+package src;
+
 public class Spring extends ActiveElement{
     Pipe outgoing;
     @Override

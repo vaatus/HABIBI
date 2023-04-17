@@ -1,18 +1,48 @@
+package src;
+
 public class Pipe implements PumpPipe {
     private int id;
+    private static int number=0;
     private ActiveElement active_element_end;
     private ActiveElement active_element_begin;
     private boolean working;
     private boolean busy;
 
-    public void Connect(Pump p) {
-        System.out.println("Connect()");
-        p.add(this);
+    //Pipe class constructor
+    public Pipe() {
+        active_element_begin = null;
+        active_element_end = null;
+        working = true;
+        busy = false;
+        id=number++;
     }
 
-    public void Disconnect(Pump p) {
+    public void Connect(Pump p1, Pump p2) {
+        System.out.println("Connect()");
+        if (!(p1.CanAdd() || (active_element_end!=null && active_element_begin!=null))) {
+            System.out.println("You can’t connect more pipes to the pump");
+            return;
+        }
+        p1.add(this);
+        if (!(p2.CanAdd() || (active_element_end!=null && active_element_begin!=null))) {
+            System.out.println("You can’t connect more pipes to the pump");
+            return;
+        }
+        p2.add(this);
+    }
+
+    public void Disconnect(Pump p1, Pump p2) {
         System.out.println("Disonnect()");
-        p.remove(this);
+        if (!(p1.CheckConnection(this) || (active_element_end==null && active_element_begin==null))){
+            System.out.println("The pipe is already disconnected from the pump.");
+            return;
+        }
+        p1.remove(this);
+        if (!(p2.CheckConnection(this) || (active_element_end==null && active_element_begin==null))){
+            System.out.println("The pipe is already disconnected from the pump.");
+            return;
+        }
+        p2.remove(this);
     }
 
     public void SetBusy()
@@ -48,5 +78,21 @@ public class Pipe implements PumpPipe {
 
     public ActiveElement GetOutgoing() {
         return active_element_end;
+    }
+
+    public Pump GetActiveElementEnd() {
+        return (Pump) active_element_end;
+    }
+
+    public Pump GetActiveElementBegin() {
+        return (Pump) active_element_begin;
+    }
+
+    public void SetIncoming(ActiveElement incoming) {
+        active_element_begin=incoming;
+    }
+
+    public void SetOutgoing(ActiveElement outgoing) {
+        active_element_end=outgoing;
     }
 }

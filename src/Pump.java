@@ -1,17 +1,26 @@
+package src;
+
 import java.util.ArrayList;
 
 public class Pump extends ActiveElement implements PumpPipe{
     private int id;
+    private static int number=0;
     private  Pipe incoming_pipe ;
     private Pipe outgoing_pipe;
     private int max_connectable_pipes;
     private int current_connected_pipes;
-    private ArrayList<Pipe> neighbouring_pipes = new ArrayList<>();
+    private ArrayList<Pipe> neighbouring_pipes = new ArrayList<>(); //needed after full code implementation
     private ArrayList<Pipe> connected_pipes = new ArrayList<>();
     private boolean working;
 
+    //Pump class contructor
     public Pump(Pipe pipe, Pipe pipe1) {
         super();
+        this.incoming_pipe=pipe;
+        this.outgoing_pipe=pipe1;
+        this.max_connectable_pipes=8;
+        id=number++;
+        current_connected_pipes=2;
     }
 
 
@@ -78,5 +87,13 @@ public class Pump extends ActiveElement implements PumpPipe{
         }
 
         return outgoing_pipe.GetOutgoing().TransferWater();
+    }
+
+    public boolean CanAdd(){
+        return (current_connected_pipes < max_connectable_pipes);
+    }
+
+    public boolean CheckConnection(Pipe p){
+        return (connected_pipes.contains(p));
     }
 }
